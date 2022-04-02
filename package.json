@@ -1,0 +1,37 @@
+{
+  "name": "travel-guide",
+  "version": "1.0.0",
+  "description": "Travel Guide",
+  "author": "Galexia Creative Agency Ltd",
+  "private": true,
+  "scripts": {
+    "start": "nuxt",
+    "generate": "nuxt generate --modern --quiet",
+    "lint": "eslint --ext .js,.vue,.css --ignore-path .gitignore . --fix"
+  },
+  "dependencies": {
+    "@netlify/plugin-sitemap": "^0.5.1",
+    "netlify-plugin-cache-nuxt": "^0.0.1",
+    "netlify-plugin-submit-sitemap": "^0.2.3",
+    "nuxt": "^2.14.10",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "devDependencies": {
+    "@aceforth/nuxt-optimized-images": "^1.4.0",
+    "@nuxtjs/eslint-config": "^2.0.0",
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "@nuxtjs/stylelint-module": "^3.1.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.1.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "imagemin-svgo": "^8.0.0",
+    "jimp": "^0.16.1",
+    "responsive-loader": "^2.3.0",
+    "sharp": "^0.30.3",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0"
+  },
+  "browserslist": [
+    "last 20 versions and not ie <= 11 and > 0.2% and not dead and not op_mini all"
+  ]
+}
