@@ -47,11 +47,70 @@
     margin: 0 1.25rem;
     transition: opacity .5s
   }
-  form button:before {
-    content: none
+
+  /* Cards */
+  .card {
+    position: relative;
+    border-radius: .5em
   }
-  form button:hover {
-    opacity: .75
+  .card .card--inner {
+    padding: 1rem;
+    padding-bottom: 5rem;
+    color: white
+  }
+  .card,
+  .card:nth-of-type(2n):before {
+    background-color: var(--primaryColor)
+  }
+  .card:nth-of-type(2n),
+  .card:before {
+    background-color: var(--tertiaryColor)
+  }
+  .card:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: .75em;
+    top: .75em;
+    border-radius: .5em;
+    z-index: -1;
+    transition: left .5s, top .5s
+  }
+  .card:hover:before {
+    left: .5em;
+    top: .5em
+  }
+  .card .card--inner * {
+    margin: 0;
+    font-weight: normal
+  }
+  .card img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: .5em .5em 0 0
+  }
+
+  /* Stay Connected */
+  #stay-connected {
+    text-align: center
+  }
+  #stay-connected h2 {
+    margin: 0
+  }
+  #stay-connected h3 {
+    font-weight: normal;
+    margin: 1.5rem 0
+  }
+  #stay-connected form {
+    margin: auto;
+    align-items: center;
+    overflow: hidden;
+    width: fit-content
+  }
+  #stay-connected input {
+    width: 500px;
+    padding: 2rem .75rem
   }
 </style>
 
@@ -72,7 +131,7 @@
           <input type="date" placeholder="When would you like to go?">
         </label>
         <button type="submit" class="button">
-          Search Trips
+          <span>Search Trips</span>
         </button>
       </form>
     </header>
@@ -91,7 +150,7 @@
           </p>
           <p>
             <a class="button" href="#">
-              Book Now
+              <span>Book Now</span>
             </a>
           </p>
         </div>
@@ -101,10 +160,10 @@
       </div>
     </div>
     <div class="max-width">
-      <div>
-        <figure>
-          <blockquote cite="https://www.huxley.net/bnw/four.html">
-            <p>Wherever you go becomes a part of you somehow</p>
+      <div class="primary-panel">
+        <figure class="quote">
+          <blockquote>
+            Wherever you go becomes a part of you somehow
           </blockquote>
           <figcaption>—Anita Desai</figcaption>
         </figure>
@@ -112,79 +171,151 @@
     </div>
     <div class="max-width">
       <div class="grid column-4">
-        <div class="card">
-          <img src="../assets/img/sunset-plane.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
-          <h2>
-            Dubai
-          </h2>
-          <p>
-            123 miles away
-          </p>
-        </div>
-        <div class="card">
-          <img src="../assets/img/sunset-plane.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
-          <h2>
-            Dubai
-          </h2>
-          <p>
-            123 miles away
-          </p>
-        </div>
-        <div class="card">
-          <img src="../assets/img/sunset-plane.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
-          <h2>
-            Dubai
-          </h2>
-          <p>
-            123 miles away
-          </p>
-        </div>
-        <div class="card">
-          <img src="../assets/img/sunset-plane.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
-          <h2>
-            Dubai
-          </h2>
-          <p>
-            123 miles away
-          </p>
-        </div>
+        <a class="card" href="#">
+          <img src="../assets/img/scotland.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
+          <div class="card--inner">
+            <h2>
+              Scotland
+            </h2>
+            <p>
+              123 miles away
+            </p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <img src="../assets/img/england.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
+          <div class="card--inner">
+            <h2>
+              England
+            </h2>
+            <p>
+              456 miles away
+            </p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <img src="../assets/img/wales.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
+          <div class="card--inner">
+            <h2>
+              Wales
+            </h2>
+            <p>
+              789 miles away
+            </p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <img src="../assets/img/northern-ireland.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
+          <div class="card--inner">
+            <h2>
+              Northern Ireland
+            </h2>
+            <p>
+              123 miles away
+            </p>
+          </div>
+        </a>
       </div>
     </div>
     <div class="max-width">
-      <h2>
-        Stay Connected
-      </h2>
-      <h3>
-        If you would like to receive information about our experiences, leave your email address here.
-      </h3>
-      <form>
-        <input type="email" placeholder="Leave your email for holidays straight to your inbox">
-        <button type="submit" class="button">
-          Subscribe
-        </button>
-      </form>
+      <div class="image-background">
+        <h2>
+          Questions<br>about<br>your trip?
+        </h2>
+        <p>
+          <a class="button" href="#">
+            <span>Ask away</span>
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="max-width">
+      <div class="grid column-4">
+        <a class="card" href="#">
+          <img src="../assets/img/sunset-plane.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
+          <div class="card--inner">
+            <h2>
+              Dubai
+            </h2>
+            <p>
+              123 miles away
+            </p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <img src="../assets/img/plane-clouds.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
+          <div class="card--inner">
+            <h2>
+              Spain
+            </h2>
+            <p>
+              456 miles away
+            </p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <img src="../assets/img/america.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
+          <div class="card--inner">
+            <h2>
+              Abu Dhabi
+            </h2>
+            <p>
+              789 miles away
+            </p>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <img src="../assets/img/cloud-mountains.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
+          <div class="card--inner">
+            <h2>
+              France
+            </h2>
+            <p>
+              123 miles away
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="max-width">
+      <div id="stay-connected" class="tertiary-panel">
+        <h2>
+          Stay Connected
+        </h2>
+        <h3>
+          If you would like to receive information about our experiences, leave your email address here.
+        </h3>
+        <form>
+          <input type="email" placeholder="Leave your email for holidays straight to your inbox...">
+          <button type="submit" class="button">
+            <span>Subscribe</span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="max-width">
+      <div class="grid column-2 middle reverse">
+        <div class="grid">
+          <h2>
+            This could be you
+          </h2>
+          <hr>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eleifend a dolor vitae luctus. Quisque ullamcorper nibh id lacus feugiat scelerisque. Duis malesuada est vel dolor hendrerit, ac malesuada ligula porttitor. Nulla facilisi. Aenean quis tortor in orci porta faucibus. Donec ac condimentum libero, nec congue metus. Vestibulum et aliquet augue.
+          </p>
+          <h2 class="fancy">
+            Let us take you away
+          </h2>
+          <p>
+            <a class="button" href="#">
+              <span>Book Now</span>
+            </a>
+          </p>
+        </div>
+        <div class="img--border">
+          <img src="../assets/img/hot-air-balloons.jpg?resize&size=600&format=webp" width="100%" loading="lazy">
+        </div>
+      </div>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  head () {
-    return {
-      title: 'Home',
-      meta: [
-        { hid: 'description', name: 'description', content: 'REPLACE' },
-        { hid: 'og:title', property: 'og:title', content: 'Home' },
-        { hid: 'og:description', property: 'og:description', content: 'REPLACE' },
-        { hid: 'og:image', property: 'og:image', content: 'REPLACE' },
-        { hid: 'twitter:title', name: 'twitter:title', content: 'Home' },
-        { hid: 'twitter:description', name: 'twitter:description', content: 'REPLACE' },
-        { hid: 'twitter:img', name: 'twitter:img', content: 'REPLACE' }
-      ],
-      link: [
-        { hid: 'canonical', rel: 'canonical', href: 'REPLACE' }
-      ]
-    }
-  }
-}
-</script>

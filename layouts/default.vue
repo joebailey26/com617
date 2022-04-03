@@ -15,6 +15,21 @@
     color: var(--primaryColor);
     font-family: dancing script, cursive
   }
+  .quote {
+    width: fit-content;
+    margin: auto
+  }
+  .quote blockquote {
+    font-family: dancing script, cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin: 0 auto 1rem auto;
+    width: fit-content
+  }
+  .quote blockquote + figcaption {
+    text-align: right;
+    font-size: 1.5rem
+  }
   body {
     font-family: raleway, sans-serif;
     color: #323232;
@@ -27,7 +42,7 @@
     outline: none
   }
   .max-width {
-    padding: 2rem;
+    padding: 6rem 2rem;
     max-width: min(1376px, calc(100vw - 4rem));
     margin: auto
   }
@@ -56,6 +71,16 @@
   .column-4 {
     grid-template-columns: repeat(4, 1fr)
   }
+  @media (min-width: 1201px) {
+    .column-2.reverse > *:last-of-type {
+      grid-column: 1;
+      grid-row: 1
+    }
+    .column-2.reverse > *:first-of-type {
+      grid-column: 2;
+      grid-row: 1
+    }
+  }
   @media (max-width: 1200px) {
     .column-4 {
       grid-template-columns: repeat(2, 1fr)
@@ -78,7 +103,7 @@
     aspect-ratio: 14/9;
     margin-left: 1rem;
     margin-top: 1rem;
-    border-radius: .25em
+    border-radius: .5em
   }
   .img--border img {
     object-fit: cover;
@@ -87,7 +112,7 @@
     height: 100%;
     left: -1rem;
     top: -1rem;
-    border-radius: .25em
+    border-radius: .5em
   }
   .button {
     padding: .66em .75em;
@@ -100,7 +125,24 @@
     position: relative;
     cursor: pointer
   }
+  .button span {
+    z-index: 2;
+    position: relative
+  }
   .button:before {
+    content: '';
+    background-color: var(--tertiaryColor);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: .25em;
+    z-index: 1
+  }
+  .button:after {
     content: '';
     background-color: var(--primaryColor);
     position: absolute;
@@ -109,10 +151,10 @@
     left: .5em;
     top: .5em;
     border-radius: .25em;
-    z-index: -1;
+    z-index: 0;
     transition: left .5s, top .5s
   }
-  .button:hover:before {
+  .button:hover:after {
     left: .25em;
     top: .25em
   }
@@ -203,19 +245,25 @@
 
   /* Footer */
   footer {
-    background-color: var(--primaryColor)
+    background-image: url('../assets/img/boat-mountains.jpg?resize&size=1920&format=webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 60px 0
+  }
+  footer .footer--inner {
+    background-color: rgba(42, 152, 96, 50%);
+    backdrop-filter: blur(5px)
+  }
+  footer .footer--copyright p {
+    margin-bottom: 0
   }
   footer .logo {
     filter: brightness(999) grayscale(1)
   }
-  footer.footer--copyright {
-    background-color: var(--tertiaryColor)
-  }
-  footer.footer--copyright p {
-    margin: 0
-  }
   footer *, footer :any-link {
-    color: white
+    color: white;
+    font-size: 1rem
   }
   footer h3 {
     font-size: 1.5rem;
@@ -232,6 +280,45 @@
     padding-left: 0;
     padding-top: 0;
     display: inline-block
+  }
+
+  /* Panels */
+  .primary-panel {
+    background-color: var(--primaryColor)
+  }
+  .secondary-panel {
+    background-color: var(--secondaryColor)
+  }
+  .tertiary-panel {
+    background-color: var(--tertiaryColor)
+  }
+  .primary-panel *,
+  .secondary-panel *,
+  .tertiary-panel * {
+    color: white
+  }
+  .primary-panel,
+  .secondary-panel,
+  .tertiary-panel,
+  .image-background {
+    border-radius: .5rem;
+    padding: 4rem 2rem;
+    margin-top: -4rem;
+    margin-bottom: -4rem
+  }
+  .image-background {
+    background-image: url('../assets/img/forest-mountains.jpg?resize&size=1920&format=webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    aspect-ratio: 3/1;
+    display: grid;
+    justify-content: space-between
+  }
+  .image-background h2 {
+    font-size: 4rem;
+    color: white;
+    font-weight: 900
   }
 </style>
 
@@ -267,7 +354,7 @@
             Contact
           </nuxt-link>
           <nuxt-link to="/sign-up" class="nav--link button">
-            Sign Up
+            <span>Sign Up</span>
           </nuxt-link>
         </div>
       </nav>
@@ -276,16 +363,11 @@
       <nuxt keep-alive />
     </main>
     <footer>
-      <div class="max-width">
-        <nuxt-link class="logo" to="/">
-          <img src="../assets/img/logo.png?resize=300&format=webp" width="200">
-        </nuxt-link>
+      <div class="max-width footer--inner">
         <div class="grid column-3">
-          <div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non velit condimentum, dictum quam tempus, aliquet tellus. Mauris quam felis, fringilla sit amet elementum ut, blandit quis velit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti.
-            </p>
-          </div>
+          <nuxt-link class="logo" to="/">
+            <img src="../assets/img/logo.png?resize=300&format=webp" width="200">
+          </nuxt-link>
           <div>
             <h3>
               More Information
@@ -315,6 +397,7 @@
                 SO12 3FU
               </p>
             </address>
+            <br>
             <p>
               <a href="tel:01234567890">01234567890</a>
               <br>
@@ -322,11 +405,6 @@
             </p>
           </div>
         </div>
-      </div>
-    </footer>
-    <footer class="footer--copyright">
-      <div class="max-width">
-        <p>© {{ new Date().getFullYear() }} Travel Guide. Website by <a href="https://galexia.agency">Galexia Creative Agency Ltd</a></p>
       </div>
     </footer>
   </div>
